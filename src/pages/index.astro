@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
@@ -19,7 +20,7 @@ const [siteData, homeEntry, projects, eventsData] = await Promise.all([
 
 const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 3);
 const upcomingEvents = eventsData.events.filter((event) => isUpcoming(event.date)).slice(0, 3);
-const { Content } = await homeEntry.render();
+const { Content } = await render(homeEntry);
 ---
 <BaseLayout siteData={siteData}>
   <Hero

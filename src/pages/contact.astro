@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
 import Card from '../components/Card.astro';
 import CardGrid from '../components/CardGrid.astro';
 import { getPageById, getSiteData } from '../lib/content';
 
 const [siteData, contactEntry] = await Promise.all([getSiteData(), getPageById('contact')]);
-const { Content } = await contactEntry.render();
+const { Content } = await render(contactEntry);
 const hasFormspree = Boolean(siteData.contact.formspree_endpoint);
 ---
 <BaseLayout title={contactEntry.data.title} description={contactEntry.data.description} siteData={siteData}>

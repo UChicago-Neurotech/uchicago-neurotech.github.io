@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
 import Card from '../components/Card.astro';
 import CardGrid from '../components/CardGrid.astro';
 import { getPageById, getSiteData } from '../lib/content';
 import { withBase, isExternal } from '../lib/links';
 
 const [siteData, joinEntry] = await Promise.all([getSiteData(), getPageById('join')]);
-const { Content } = await joinEntry.render();
+const { Content } = await render(joinEntry);
 
 const links = [
   siteData.join_links.interest_form,

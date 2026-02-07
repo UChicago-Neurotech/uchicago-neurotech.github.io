@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
 import Section from '../../components/Section.astro';
 import Card from '../../components/Card.astro';
 import { getProjects, getSiteData } from '../../lib/content';
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 
 const siteData = await getSiteData();
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 <BaseLayout title={project.data.title} description={project.data.summary} siteData={siteData}>
   <a href={withBase('/projects')} class="inline-flex text-sm font-semibold text-brand-700 hover:text-brand-800">← Back to projects</a>

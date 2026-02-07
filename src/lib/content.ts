@@ -1,25 +1,91 @@
 import { getCollection } from 'astro:content';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { z } from 'zod';
 
-function firstEntry<T>(entries: Array<{ data: T }>, label: string): T {
-  if (!entries.length) {
-    throw new Error(`Missing required content file for ${label}.`);
-  }
-  return entries[0].data;
+const linkSchema = z.object({
+  label: z.string().min(1),
+  href: z.string().min(1)
+});
+
+const siteSchema = z.object({
+  name: z.string().min(1),
+  short_name: z.string().min(1),
+  description: z.string().min(1),
+  navigation: z.array(linkSchema).min(1),
+  hero: z.object({
+    title: z.string().min(1),
+    subtitle: z.string().min(1),
+    primary_cta: linkSchema,
+    secondary_cta: linkSchema
+  }),
+  join_links: z.object({
+    interest_form: linkSchema,
+    discord: linkSchema,
+    mailing_list: linkSchema
+  }),
+  contact: z.object({
+    email: z.string().email(),
+    formspree_endpoint: z.string().url().optional().or(z.literal('')),
+    socials: z.array(linkSchema)
+  }),
+  footer: z.object({
+    copyright: z.string().min(1),
+    address: z.string().optional().or(z.literal(''))
+  }),
+  partners: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        url: z.string().url()
+      })
+    )
+    .optional()
+});
+
+const teamSchema = z.array(
+  z.object({
+    name: z.string().min(1),
+    role: z.string().min(1),
+    bio: z.string().min(1),
+    headshot: z.string().optional(),
+    links: z.array(linkSchema).optional()
+  })
+);
+
+const eventsSchema = z.object({
+  section_title: z.string().min(1),
+  calendar_embed_url: z.string().url().optional().or(z.literal('')),
+  calendar_note: z.string().optional(),
+  events: z.array(
+    z.object({
+      title: z.string().min(1),
+      date: z.string().min(1),
+      time: z.string().min(1),
+      location: z.string().min(1),
+      description: z.string().min(1),
+      url: z.string().url().optional().or(z.literal(''))
+    })
+  )
+});
+
+async function readTypedJson<T>(relativePath: string, schema: z.ZodSchema<T>): Promise<T> {
+  const filePath = join(process.cwd(), 'src', 'content', relativePath);
+  const raw = await readFile(filePath, 'utf-8');
+  const parsedJson = JSON.parse(raw);
+  return schema.parse(parsedJson);
 }
 
 export async function getSiteData() {
-  const siteEntries = await getCollection('site');
-  return firstEntry(siteEntries, 'site settings');
+  return readTypedJson('site.json', siteSchema);
 }
 
 export async function getTeamData() {
-  const teamEntries = await getCollection('team');
-  return firstEntry(teamEntries, 'team');
+  return readTypedJson('team.json', teamSchema);
 }
 
 export async function getEventsData() {
-  const eventEntries = await getCollection('events');
-  return firstEntry(eventEntries, 'events');
+  return readTypedJson('events.json', eventsSchema);
 }
 
 export async function getPageById(id: string) {
@@ -35,5 +101,10 @@ export async function getPageById(id: string) {
 
 export async function getProjects() {
   const projects = await getCollection('projects');
-  return projects.sort((a, b) => a.data.title.localeCompare(b.data.title));
+  return projects
+    .map((project) => ({
+      ...project,
+      slug: project.id.replace(/^projects\//, '').replace(/\.md$/, '')
+    }))
+    .sort((a, b) => a.data.title.localeCompare(b.data.title));
 }
