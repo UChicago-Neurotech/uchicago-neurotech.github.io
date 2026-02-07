@@ -1,0 +1,53 @@
+---
+import { withBase, isExternal } from '../lib/links';
+
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  siteName: string;
+  socials: LinkItem[];
+  footerText: string;
+  address?: string;
+}
+
+const { siteName, socials, footerText, address } = Astro.props;
+---
+<footer class="mt-16 border-t border-slate-200 bg-white/80">
+  <div class="mx-auto grid w-full max-w-6xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:px-8">
+    <div>
+      <p class="text-sm font-semibold text-slate-900">{siteName}</p>
+      <p class="mt-2 text-sm text-slate-600">{footerText}</p>
+      {address && <p class="mt-2 text-sm text-slate-500">{address}</p>}
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-900">Social</p>
+      <ul class="mt-2 space-y-2 text-sm text-slate-600">
+        {socials.map((social) => (
+          <li>
+            <a
+              class="transition hover:text-brand-700"
+              href={withBase(social.href)}
+              target={isExternal(social.href) ? '_blank' : undefined}
+              rel={isExternal(social.href) ? 'noreferrer' : undefined}
+            >
+              {social.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-900">Quick Links</p>
+      <ul class="mt-2 space-y-2 text-sm text-slate-600">
+        <li><a href={withBase('/join')} class="transition hover:text-brand-700">Join</a></li>
+        <li><a href={withBase('/projects')} class="transition hover:text-brand-700">Projects</a></li>
+        <li><a href={withBase('/contact')} class="transition hover:text-brand-700">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

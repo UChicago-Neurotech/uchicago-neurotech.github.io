@@ -1,0 +1,21 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+<div class="flex flex-wrap gap-2" aria-label="Project tag filters">
+  <button class="tag-filter rounded-full bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white" data-tag="all" type="button">
+    All
+  </button>
+  {tags.map((tag) => (
+    <button
+      class="tag-filter rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700"
+      data-tag={tag.toLowerCase()}
+      type="button"
+    >
+      {tag}
+    </button>
+  ))}
+</div>

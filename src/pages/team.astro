@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import CardGrid from '../components/CardGrid.astro';
+import TeamCard from '../components/TeamCard.astro';
+import { getSiteData, getTeamData } from '../lib/content';
+
+const [siteData, teamMembers] = await Promise.all([getSiteData(), getTeamData()]);
+---
+<BaseLayout title="Team" description="Meet UChicago Neurotech" siteData={siteData}>
+  <Section title="Team" description="This page is generated from src/content/team.json.">
+    <CardGrid cols="3">
+      {teamMembers.map((member) => (
+        <TeamCard
+          name={member.name}
+          role={member.role}
+          bio={member.bio}
+          headshot={member.headshot}
+          links={member.links}
+        />
+      ))}
+    </CardGrid>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import CardGrid from '../components/CardGrid.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CalendarEmbed from '../components/CalendarEmbed.astro';
+import { getEventsData, getPageById, getProjects, getSiteData } from '../lib/content';
+import { formatDate, isUpcoming } from '../lib/date';
+import { withBase } from '../lib/links';
+
+const [siteData, homeEntry, projects, eventsData] = await Promise.all([
+  getSiteData(),
+  getPageById('home'),
+  getProjects(),
+  getEventsData()
+]);
+
+const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 3);
+const upcomingEvents = eventsData.events.filter((event) => isUpcoming(event.date)).slice(0, 3);
+const { Content } = await homeEntry.render();
+---
+<BaseLayout siteData={siteData}>
+  <Hero
+    title={siteData.hero.title}
+    subtitle={siteData.hero.subtitle}
+    primary={siteData.hero.primary_cta}
+    secondary={siteData.hero.secondary_cta}
+  />
+
+  <Section title={homeEntry.data.what_we_do_heading ?? 'What we do'}>
+    <CardGrid cols="4">
+      {(homeEntry.data.what_we_do_cards ?? []).map((card) => (
+        <Card title={card.title}>{card.description}</Card>
+      ))}
+    </CardGrid>
+
+    <div class="prose mt-8 max-w-none rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+      <Content />
+    </div>
+  </Section>
+
+  <Section title="Featured Projects" description="Projects marked featured in project frontmatter appear here automatically.">
+    <div slot="actions">
+      <a href={withBase('/projects')} class="text-sm font-semibold text-brand-700 hover:text-brand-800">All projects</a>
+    </div>
+
+    {featuredProjects.length > 0 ? (
+      <CardGrid cols="3">
+        {featuredProjects.map((project) => (
+          <ProjectCard
+            slug={project.slug}
+            title={project.data.title}
+            summary={project.data.summary}
+            status={project.data.status}
+            tags={project.data.tags}
+            leads={project.data.lead_names}
+          />
+        ))}
+      </CardGrid>
+    ) : (
+      <Card title="No featured projects yet.">
+        Set <code>featured: true</code> in any <code>src/content/projects/*.md</code> file to populate this section.
+      </Card>
+    )}
+  </Section>
+
+  <Section title="Next Events">
+    {eventsData.calendar_embed_url ? (
+      <CalendarEmbed url={eventsData.calendar_embed_url} note={eventsData.calendar_note} />
+    ) : upcomingEvents.length > 0 ? (
+      <CardGrid cols="3">
+        {upcomingEvents.map((event) => (
+          <Card title={event.title}>
+            <p class="font-medium text-slate-800">{formatDate(event.date)} · {event.time}</p>
+            <p>{event.location}</p>
+            <p class="mt-2">{event.description}</p>
+            {event.url && (
+              <a class="mt-3 inline-block text-sm font-semibold text-brand-700" href={event.url} target="_blank" rel="noreferrer">
+                Event details
+              </a>
+            )}
+          </Card>
+        ))}
+      </CardGrid>
+    ) : (
+      <Card title="No upcoming events listed.">
+        Add events in <code>src/content/events.json</code> or set <code>calendar_embed_url</code>.
+      </Card>
+    )}
+  </Section>
+
+  {siteData.partners && siteData.partners.length > 0 && (
+    <Section title="Sponsors & Partners">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {siteData.partners.map((partner) => (
+          <a
+            href={partner.url}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-soft transition hover:border-brand-300 hover:text-brand-700"
+          >
+            {partner.name}
+          </a>
+        ))}
+      </div>
+    </Section>
+  )}
+</BaseLayout>

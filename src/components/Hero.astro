@@ -1,0 +1,42 @@
+---
+import { withBase, isExternal } from '../lib/links';
+
+interface CTA {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  primary: CTA;
+  secondary: CTA;
+}
+
+const { title, subtitle, primary, secondary } = Astro.props;
+---
+<section class="rounded-3xl border border-brand-100 bg-gradient-to-br from-white via-brand-50 to-brand-100/70 px-6 py-12 shadow-soft sm:px-10 sm:py-16">
+  <p class="inline-flex rounded-full border border-brand-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700">
+    UChicago Neurotech
+  </p>
+  <h1 class="mt-5 max-w-3xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">{title}</h1>
+  <p class="mt-4 max-w-2xl text-base text-slate-700 sm:text-lg">{subtitle}</p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a
+      href={withBase(primary.href)}
+      class="rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+      target={isExternal(primary.href) ? '_blank' : undefined}
+      rel={isExternal(primary.href) ? 'noreferrer' : undefined}
+    >
+      {primary.label}
+    </a>
+    <a
+      href={withBase(secondary.href)}
+      class="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-300 hover:text-brand-700"
+      target={isExternal(secondary.href) ? '_blank' : undefined}
+      rel={isExternal(secondary.href) ? 'noreferrer' : undefined}
+    >
+      {secondary.label}
+    </a>
+  </div>
+</section>

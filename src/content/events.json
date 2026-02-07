@@ -1,0 +1,31 @@
+{
+  "section_title": "Upcoming Events",
+  "calendar_embed_url": "",
+  "calendar_note": "Set calendar_embed_url to your Google Calendar embed link to show the live calendar here.",
+  "events": [
+    {
+      "title": "Neurotech Onboarding Sprint",
+      "date": "2026-03-03",
+      "time": "6:00 PM - 7:30 PM",
+      "location": "Crerar 390",
+      "description": "Replace with your real kickoff event details and RSVP instructions.",
+      "url": "https://example.org/replace-event-link-1"
+    },
+    {
+      "title": "EEG Signal Processing Workshop",
+      "date": "2026-03-12",
+      "time": "5:30 PM - 7:00 PM",
+      "location": "KCBD 120",
+      "description": "Replace with workshop agenda, prerequisites, and facilitator names.",
+      "url": "https://example.org/replace-event-link-2"
+    },
+    {
+      "title": "Project Demo Night",
+      "date": "2026-04-02",
+      "time": "7:00 PM - 8:30 PM",
+      "location": "John Crerar Library",
+      "description": "Replace with demo format and how visitors can attend.",
+      "url": "https://example.org/replace-event-link-3"
+    }
+  ]
+}

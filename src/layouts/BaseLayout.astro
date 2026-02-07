@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface SiteData {
+  name: string;
+  short_name: string;
+  description: string;
+  navigation: LinkItem[];
+  contact: {
+    socials: LinkItem[];
+  };
+  footer: {
+    copyright: string;
+    address?: string;
+  };
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  siteData: SiteData;
+}
+
+const { title, description, siteData } = Astro.props;
+const pageTitle = title ? `${title} | ${siteData.short_name}` : siteData.name;
+const pageDescription = description ?? siteData.description;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="theme-color" content="#1f61dc" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Navbar siteName={siteData.short_name} navigation={siteData.navigation} />
+    <main id="main-content" class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+    <Footer
+      siteName={siteData.short_name}
+      socials={siteData.contact.socials}
+      footerText={siteData.footer.copyright}
+      address={siteData.footer.address}
+    />
+  </body>
+</html>

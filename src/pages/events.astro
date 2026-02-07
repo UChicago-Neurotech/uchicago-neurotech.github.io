@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import CardGrid from '../components/CardGrid.astro';
+import Card from '../components/Card.astro';
+import CalendarEmbed from '../components/CalendarEmbed.astro';
+import { getEventsData, getSiteData } from '../lib/content';
+import { formatDate, isUpcoming } from '../lib/date';
+
+const [siteData, eventsData] = await Promise.all([getSiteData(), getEventsData()]);
+const upcomingEvents = eventsData.events.filter((event) => isUpcoming(event.date));
+---
+<BaseLayout title="Events" description="Upcoming UChicago Neurotech events" siteData={siteData}>
+  <Section title={eventsData.section_title} description="Configure this page in src/content/events.json.">
+    {eventsData.calendar_embed_url ? (
+      <>
+        <p class="mb-4 text-sm text-slate-700">
+          Live calendar view is enabled from <code>calendar_embed_url</code> in <code>src/content/events.json</code>.
+        </p>
+        <CalendarEmbed url={eventsData.calendar_embed_url} note={eventsData.calendar_note} />
+      </>
+    ) : upcomingEvents.length > 0 ? (
+      <CardGrid cols="3">
+        {upcomingEvents.map((event) => (
+          <Card title={event.title}>
+            <p class="font-medium text-slate-800">{formatDate(event.date)} · {event.time}</p>
+            <p>{event.location}</p>
+            <p class="mt-2">{event.description}</p>
+            {event.url && (
+              <a class="mt-3 inline-block text-sm font-semibold text-brand-700" href={event.url} target="_blank" rel="noreferrer">
+                Event details
+              </a>
+            )}
+          </Card>
+        ))}
+      </CardGrid>
+    ) : (
+      <Card title="No upcoming events available">
+        Add events in <code>src/content/events.json</code> or set <code>calendar_embed_url</code>.
+      </Card>
+    )}
+  </Section>
+</BaseLayout>

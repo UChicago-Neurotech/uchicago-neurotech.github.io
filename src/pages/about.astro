@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPageById, getSiteData } from '../lib/content';
+
+const [siteData, aboutEntry] = await Promise.all([getSiteData(), getPageById('about')]);
+const { Content } = await aboutEntry.render();
+---
+<BaseLayout title={aboutEntry.data.title} description={aboutEntry.data.description} siteData={siteData}>
+  <article class="prose max-w-none rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+    <Content />
+  </article>
+</BaseLayout>

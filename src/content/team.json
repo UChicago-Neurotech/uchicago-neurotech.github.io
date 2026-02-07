@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Alex Morgan",
+    "role": "Co-President",
+    "bio": "Replace with a real board bio: major, year, interests, and what this person leads.",
+    "headshot": "/images/team/alex-morgan.svg",
+    "links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-alex" },
+      { "label": "Email", "href": "mailto:alex@uchicago.edu" }
+    ]
+  },
+  {
+    "name": "Jordan Kim",
+    "role": "Co-President",
+    "bio": "Replace with your real executive board member details and leadership focus.",
+    "headshot": "/images/team/jordan-kim.svg",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/replace-jordan" },
+      { "label": "Email", "href": "mailto:jordan@uchicago.edu" }
+    ]
+  },
+  {
+    "name": "Priya Shah",
+    "role": "Research Lead",
+    "bio": "Placeholder bio: swap in real background and project focus areas.",
+    "headshot": "/images/team/priya-shah.svg",
+    "links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-priya" }
+    ]
+  },
+  {
+    "name": "Mateo Rivera",
+    "role": "Hardware Lead",
+    "bio": "Placeholder bio for embedded systems and device prototyping lead.",
+    "headshot": "/images/team/mateo-rivera.svg",
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/replace-mateo" }
+    ]
+  },
+  {
+    "name": "Nia Thompson",
+    "role": "Education Lead",
+    "bio": "Placeholder bio for workshops, onboarding curriculum, and member support.",
+    "headshot": "/images/team/nia-thompson.svg",
+    "links": [
+      { "label": "Email", "href": "mailto:nia@uchicago.edu" }
+    ]
+  },
+  {
+    "name": "Samir Patel",
+    "role": "Operations & Outreach",
+    "bio": "Placeholder bio for partnerships, logistics, and sponsor outreach.",
+    "headshot": "/images/team/samir-patel.svg",
+    "links": [
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-samir" }
+    ]
+  }
+]

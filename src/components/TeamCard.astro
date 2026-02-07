@@ -1,0 +1,49 @@
+---
+import { withBase, isExternal } from '../lib/links';
+
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  name: string;
+  role: string;
+  bio: string;
+  headshot?: string;
+  links?: LinkItem[];
+}
+
+const { name, role, bio, headshot, links = [] } = Astro.props;
+---
+<article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+  <div class="flex items-start gap-4">
+    <img
+      src={headshot ? withBase(headshot) : withBase('/images/team/placeholder.svg')}
+      alt={`Headshot placeholder for ${name}`}
+      class="h-16 w-16 rounded-full border border-slate-200 object-cover"
+      loading="lazy"
+    />
+    <div>
+      <h3 class="text-lg font-semibold text-slate-900">{name}</h3>
+      <p class="text-sm font-medium text-brand-700">{role}</p>
+    </div>
+  </div>
+  <p class="mt-4 text-sm text-slate-700">{bio}</p>
+  {links.length > 0 && (
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {links.map((link) => (
+        <li>
+          <a
+            href={withBase(link.href)}
+            class="rounded-md bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-brand-100 hover:text-brand-700"
+            target={isExternal(link.href) ? '_blank' : undefined}
+            rel={isExternal(link.href) ? 'noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</article>

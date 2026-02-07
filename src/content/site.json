@@ -1,0 +1,42 @@
+{
+  "name": "UChicago Neurotech",
+  "short_name": "UC Neurotech",
+  "description": "Student-led community advancing neurotechnology through hands-on builds, research, and education.",
+  "navigation": [
+    { "label": "About", "href": "/about" },
+    { "label": "Projects", "href": "/projects" },
+    { "label": "Team", "href": "/team" },
+    { "label": "Events", "href": "/events" },
+    { "label": "Join", "href": "/join" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "hero": {
+    "title": "Build the future of brain-computer technology at UChicago",
+    "subtitle": "Replace this subtitle with your mission in plain language: what you build, who can join, and why it matters.",
+    "primary_cta": { "label": "Join the Team", "href": "/join" },
+    "secondary_cta": { "label": "Explore Projects", "href": "/projects" }
+  },
+  "join_links": {
+    "interest_form": { "label": "Interest Form", "href": "https://forms.gle/replace-with-your-form" },
+    "discord": { "label": "Discord", "href": "https://discord.gg/replace-with-your-invite" },
+    "mailing_list": { "label": "Mailing List", "href": "https://lists.uchicago.edu/replace-with-your-list" }
+  },
+  "contact": {
+    "email": "neurotech@uchicago.edu",
+    "formspree_endpoint": "",
+    "socials": [
+      { "label": "Instagram", "href": "https://instagram.com/replace-with-handle" },
+      { "label": "LinkedIn", "href": "https://linkedin.com/company/replace-with-page" },
+      { "label": "GitHub", "href": "https://github.com/replace-with-org" }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2026 UChicago Neurotech. Replace with your legal name.",
+    "address": "John Crerar Library, 5730 S Ellis Ave, Chicago, IL 60637"
+  },
+  "partners": [
+    { "name": "Institute for Mind and Biology", "url": "https://example.org/replace-partner-link-1" },
+    { "name": "Polsky Center", "url": "https://example.org/replace-partner-link-2" },
+    { "name": "Campus Research Computing", "url": "https://example.org/replace-partner-link-3" }
+  ]
+}

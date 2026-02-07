@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-muted: #eef3fb;
+  --text: #0f172a;
+  --text-muted: #334155;
+  --ring: #1f61dc;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top right, #e3efff, transparent 50%), var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.prose a {
+  @apply text-brand-700 underline decoration-brand-300 underline-offset-4;
+}
+
+.prose :where(h2, h3) {
+  @apply text-slate-900;
+}
+
+.prose :where(p, li) {
+  @apply text-slate-700;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  @apply rounded-md bg-white px-3 py-2 text-sm font-semibold shadow;
+}

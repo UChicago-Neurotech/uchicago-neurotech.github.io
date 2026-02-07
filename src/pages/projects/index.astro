@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import { getProjects, getSiteData } from '../../lib/content';
+
+const [siteData, projects] = await Promise.all([getSiteData(), getProjects()]);
+const currentProjects = projects.filter((project) => project.data.status === 'current');
+const pastProjects = projects.filter((project) => project.data.status === 'past');
+const tags = [...new Set(projects.flatMap((project) => project.data.tags))].sort((a, b) => a.localeCompare(b));
+---
+<BaseLayout title="Projects" description="All UChicago Neurotech projects" siteData={siteData}>
+  <Section title="Projects" description="Use tags to filter. Project cards and detail pages come from src/content/projects/*.md.">
+    <div slot="actions">
+      <TagFilter tags={tags} />
+    </div>
+
+    <h3 class="mt-6 text-lg font-semibold text-slate-900">Current</h3>
+    <div class="project-grid mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-section="current">
+      {currentProjects.map((project) => (
+        <ProjectCard
+          slug={project.slug}
+          title={project.data.title}
+          summary={project.data.summary}
+          status={project.data.status}
+          tags={project.data.tags}
+          leads={project.data.lead_names}
+        />
+      ))}
+    </div>
+
+    <h3 class="mt-10 text-lg font-semibold text-slate-900">Past</h3>
+    <div class="project-grid mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-section="past">
+      {pastProjects.map((project) => (
+        <ProjectCard
+          slug={project.slug}
+          title={project.data.title}
+          summary={project.data.summary}
+          status={project.data.status}
+          tags={project.data.tags}
+          leads={project.data.lead_names}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <script is:inline>
+    const buttons = Array.from(document.querySelectorAll('.tag-filter'));
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+
+    const setActive = (activeTag) => {
+      buttons.forEach((button) => {
+        const isActive = button.dataset.tag === activeTag;
+        button.classList.toggle('bg-brand-600', isActive);
+        button.classList.toggle('text-white', isActive);
+        button.classList.toggle('border-slate-300', !isActive);
+        button.classList.toggle('bg-white', !isActive);
+        button.classList.toggle('text-slate-700', !isActive);
+      });
+
+      cards.forEach((card) => {
+        const cardTags = card.dataset.tags ? card.dataset.tags.split('|') : [];
+        const visible = activeTag === 'all' || cardTags.includes(activeTag);
+        card.style.display = visible ? '' : 'none';
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setActive(button.dataset.tag || 'all');
+      });
+    });
+  </script>
+</BaseLayout>
