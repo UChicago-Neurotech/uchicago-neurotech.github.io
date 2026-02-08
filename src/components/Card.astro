@@ -5,7 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<article class="h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+<article class="h-full rounded-xl border border-slate-200 bg-white p-5">
   {title && <h3 class="text-lg font-semibold text-slate-900">{title}</h3>}
   <div class={title ? 'mt-3 text-sm leading-relaxed text-slate-700' : 'text-sm leading-relaxed text-slate-700'}>
     <slot />

@@ -1,6 +1,6 @@
 {
   "name": "[Organization Name Here]",
-  "short_name": "[Short Name Here]",
+  "short_name": "uchicago neurotech",
   "description": "[One-sentence mission statement here]",
   "navigation": [
     { "label": "About", "href": "/about" },

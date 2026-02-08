@@ -15,10 +15,8 @@ interface Props {
 
 const { title, subtitle, primary, secondary } = Astro.props;
 ---
-<section class="rounded-3xl border border-brand-100 bg-gradient-to-br from-white via-brand-50 to-brand-100/70 px-6 py-12 shadow-soft sm:px-10 sm:py-16">
-  <p class="inline-flex rounded-full border border-brand-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700">
-    UChicago Neurotech
-  </p>
+<section class="rounded-2xl border border-slate-200 bg-white px-6 py-10 sm:px-10 sm:py-14">
+  <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">UChicago Neurotech</p>
   <h1 class="mt-5 max-w-3xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">{title}</h1>
   <p class="mt-4 max-w-2xl text-base text-slate-700 sm:text-lg">{subtitle}</p>
   <div class="mt-8 flex flex-wrap gap-3">
