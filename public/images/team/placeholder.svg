@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Team placeholder">
-  <rect width="160" height="160" rx="80" fill="#dbeafe"/>
-  <circle cx="80" cy="62" r="28" fill="#93c5fd"/>
-  <path d="M34 134c5-24 23-38 46-38s41 14 46 38" fill="#93c5fd"/>
+  <rect width="160" height="160" rx="80" fill="#f6dadd"/>
+  <circle cx="80" cy="62" r="28" fill="#b55f6f"/>
+  <path d="M34 134c5-24 23-38 46-38s41 14 46 38" fill="#b55f6f"/>
 </svg>

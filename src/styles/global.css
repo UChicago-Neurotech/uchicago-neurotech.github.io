@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f6f8fc;
+  --bg: #fbf7f8;
   --surface: #ffffff;
-  --surface-muted: #eef3fb;
+  --surface-muted: #f7ecef;
   --text: #0f172a;
   --text-muted: #334155;
-  --ring: #1f61dc;
+  --ring: #800000;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top right, #e3efff, transparent 50%), var(--bg);
+  background: radial-gradient(circle at top right, #f6dadd, transparent 52%), var(--bg);
   color: var(--text);
   font-family: 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif;
 }
