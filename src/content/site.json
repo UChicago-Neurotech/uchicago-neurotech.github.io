@@ -1,7 +1,7 @@
 {
-  "name": "UChicago Neurotech",
-  "short_name": "UC Neurotech",
-  "description": "Student-led community advancing neurotechnology through hands-on builds, research, and education.",
+  "name": "[Organization Name Here]",
+  "short_name": "[Short Name Here]",
+  "description": "[One-sentence mission statement here]",
   "navigation": [
     { "label": "About", "href": "/about" },
     { "label": "Projects", "href": "/projects" },
@@ -11,32 +11,32 @@
     { "label": "Contact", "href": "/contact" }
   ],
   "hero": {
-    "title": "Build the future of brain-computer technology at UChicago",
-    "subtitle": "Replace this subtitle with your mission in plain language: what you build, who can join, and why it matters.",
-    "primary_cta": { "label": "Join the Team", "href": "/join" },
-    "secondary_cta": { "label": "Explore Projects", "href": "/projects" }
+    "title": "[Hero Title Here]",
+    "subtitle": "[Hero subtitle or mission expansion here]",
+    "primary_cta": { "label": "[Primary CTA Text]", "href": "/join" },
+    "secondary_cta": { "label": "[Secondary CTA Text]", "href": "/projects" }
   },
   "join_links": {
-    "interest_form": { "label": "Interest Form", "href": "https://forms.gle/replace-with-your-form" },
-    "discord": { "label": "Discord", "href": "https://discord.gg/replace-with-your-invite" },
-    "mailing_list": { "label": "Mailing List", "href": "https://lists.uchicago.edu/replace-with-your-list" }
+    "interest_form": { "label": "[Interest Form Label]", "href": "https://example.com/interest-form" },
+    "discord": { "label": "[Discord Label]", "href": "https://example.com/discord" },
+    "mailing_list": { "label": "[Mailing List Label]", "href": "https://example.com/mailing-list" }
   },
   "contact": {
-    "email": "neurotech@uchicago.edu",
+    "email": "contact@example.com",
     "formspree_endpoint": "",
     "socials": [
-      { "label": "Instagram", "href": "https://instagram.com/replace-with-handle" },
-      { "label": "LinkedIn", "href": "https://linkedin.com/company/replace-with-page" },
-      { "label": "GitHub", "href": "https://github.com/replace-with-org" }
+      { "label": "[Social 1 Label]", "href": "https://example.com/social-1" },
+      { "label": "[Social 2 Label]", "href": "https://example.com/social-2" },
+      { "label": "[Social 3 Label]", "href": "https://example.com/social-3" }
     ]
   },
   "footer": {
-    "copyright": "© 2026 UChicago Neurotech. Replace with your legal name.",
-    "address": "John Crerar Library, 5730 S Ellis Ave, Chicago, IL 60637"
+    "copyright": "[Copyright line here]",
+    "address": "[Address here or remove this field]"
   },
   "partners": [
-    { "name": "Institute for Mind and Biology", "url": "https://example.org/replace-partner-link-1" },
-    { "name": "Polsky Center", "url": "https://example.org/replace-partner-link-2" },
-    { "name": "Campus Research Computing", "url": "https://example.org/replace-partner-link-3" }
+    { "name": "[Partner Name 1]", "url": "https://example.com/partner-1" },
+    { "name": "[Partner Name 2]", "url": "https://example.com/partner-2" },
+    { "name": "[Partner Name 3]", "url": "https://example.com/partner-3" }
   ]
 }

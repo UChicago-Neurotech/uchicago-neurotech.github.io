@@ -1,11 +1,11 @@
 ---
-title: "Contact"
-description: "How to reach the team"
+title: "[Contact Page Title]"
+description: "[Contact page meta description here]"
 ---
-## Replace this section with your preferred contact workflow
+## [Contact Workflow Heading]
 
-Tell visitors when to email, where to send collaboration requests, and how quickly you usually respond.
+[Explain how people should contact you and expected response time.]
 
-## For sponsors and mentors
+## [Sponsors And Mentors Heading]
 
-Add your outreach process for external collaborators, alumni, and industry partners.
+[Describe external collaboration process here.]

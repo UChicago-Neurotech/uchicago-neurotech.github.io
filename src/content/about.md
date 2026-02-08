@@ -1,17 +1,17 @@
 ---
-title: "About UChicago Neurotech"
-description: "About page content"
+title: "[About Page Title]"
+description: "[About page meta description here]"
 ---
-## Replace this heading with your origin story
+## [Origin Story Heading]
 
-UChicago Neurotech is currently described with placeholder copy. Replace this page with your real story: when the group started, what motivated it, and how it has evolved.
+[Write your organization origin story here.]
 
-## Values
+## [Values Heading]
 
-- Replace with your first core value.
-- Replace with your second core value.
-- Replace with your third core value.
+- [Value 1]
+- [Value 2]
+- [Value 3]
 
-## How we work
+## [How We Work Heading]
 
-Describe your meeting cadence, project structure, and how members move from onboarding to leadership.
+[Describe team structure, cadence, and operations here.]

@@ -1,58 +1,56 @@
 [
   {
-    "name": "Alex Morgan",
-    "role": "Co-President",
-    "bio": "Replace with a real board bio: major, year, interests, and what this person leads.",
-    "headshot": "/images/team/alex-morgan.svg",
+    "name": "[Board Member 1 Name]",
+    "role": "[Board Member 1 Role]",
+    "bio": "[Board member 1 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-alex" },
-      { "label": "Email", "href": "mailto:alex@uchicago.edu" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-1" }
     ]
   },
   {
-    "name": "Jordan Kim",
-    "role": "Co-President",
-    "bio": "Replace with your real executive board member details and leadership focus.",
-    "headshot": "/images/team/jordan-kim.svg",
+    "name": "[Board Member 2 Name]",
+    "role": "[Board Member 2 Role]",
+    "bio": "[Board member 2 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/replace-jordan" },
-      { "label": "Email", "href": "mailto:jordan@uchicago.edu" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-2" }
     ]
   },
   {
-    "name": "Priya Shah",
-    "role": "Research Lead",
-    "bio": "Placeholder bio: swap in real background and project focus areas.",
-    "headshot": "/images/team/priya-shah.svg",
+    "name": "[Board Member 3 Name]",
+    "role": "[Board Member 3 Role]",
+    "bio": "[Board member 3 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-priya" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-3" }
     ]
   },
   {
-    "name": "Mateo Rivera",
-    "role": "Hardware Lead",
-    "bio": "Placeholder bio for embedded systems and device prototyping lead.",
-    "headshot": "/images/team/mateo-rivera.svg",
+    "name": "[Board Member 4 Name]",
+    "role": "[Board Member 4 Role]",
+    "bio": "[Board member 4 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "GitHub", "href": "https://github.com/replace-mateo" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-4" }
     ]
   },
   {
-    "name": "Nia Thompson",
-    "role": "Education Lead",
-    "bio": "Placeholder bio for workshops, onboarding curriculum, and member support.",
-    "headshot": "/images/team/nia-thompson.svg",
+    "name": "[Board Member 5 Name]",
+    "role": "[Board Member 5 Role]",
+    "bio": "[Board member 5 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "Email", "href": "mailto:nia@uchicago.edu" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-5" }
     ]
   },
   {
-    "name": "Samir Patel",
-    "role": "Operations & Outreach",
-    "bio": "Placeholder bio for partnerships, logistics, and sponsor outreach.",
-    "headshot": "/images/team/samir-patel.svg",
+    "name": "[Board Member 6 Name]",
+    "role": "[Board Member 6 Role]",
+    "bio": "[Board member 6 bio here]",
+    "headshot": "/images/team/placeholder.svg",
     "links": [
-      { "label": "LinkedIn", "href": "https://linkedin.com/in/replace-samir" }
+      { "label": "[Link Label]", "href": "https://example.com/profile-6" }
     ]
   }
 ]

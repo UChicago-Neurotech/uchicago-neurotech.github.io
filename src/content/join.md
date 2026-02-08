@@ -1,17 +1,17 @@
 ---
-title: "Join"
-description: "How to get involved"
+title: "[Join Page Title]"
+description: "[Join page meta description here]"
 ---
-## Replace with your recruitment message
+## [Recruitment Message Heading]
 
-Use this page to explain who should apply, what skills are welcome, and how much time members typically commit each week.
+[Describe who should join and expectations here.]
 
-## What to expect
+## [What To Expect Heading]
 
-- Add your onboarding steps.
-- Add your team culture expectations.
-- Add your first-month milestone for new members.
+- [Onboarding step 1]
+- [Onboarding step 2]
+- [Onboarding step 3]
 
-## Membership tracks
+## [Membership Tracks Heading]
 
-You can replace this section with tracks like hardware, machine learning, wet lab collaboration, policy, or education.
+[List tracks and learning paths here.]

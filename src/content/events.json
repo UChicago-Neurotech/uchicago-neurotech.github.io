@@ -1,31 +1,31 @@
 {
-  "section_title": "Upcoming Events",
+  "section_title": "[Upcoming Events Heading]",
   "calendar_embed_url": "",
-  "calendar_note": "Set calendar_embed_url to your Google Calendar embed link to show the live calendar here.",
+  "calendar_note": "[Add your Google Calendar embed URL to show the calendar here.]",
   "events": [
     {
-      "title": "Neurotech Onboarding Sprint",
-      "date": "2026-03-03",
-      "time": "6:00 PM - 7:30 PM",
-      "location": "Crerar 390",
-      "description": "Replace with your real kickoff event details and RSVP instructions.",
-      "url": "https://example.org/replace-event-link-1"
+      "title": "[Event 1 Title]",
+      "date": "2026-03-10",
+      "time": "[Event 1 Time]",
+      "location": "[Event 1 Location]",
+      "description": "[Event 1 Description]",
+      "url": "https://example.com/event-1"
     },
     {
-      "title": "EEG Signal Processing Workshop",
-      "date": "2026-03-12",
-      "time": "5:30 PM - 7:00 PM",
-      "location": "KCBD 120",
-      "description": "Replace with workshop agenda, prerequisites, and facilitator names.",
-      "url": "https://example.org/replace-event-link-2"
+      "title": "[Event 2 Title]",
+      "date": "2026-03-17",
+      "time": "[Event 2 Time]",
+      "location": "[Event 2 Location]",
+      "description": "[Event 2 Description]",
+      "url": "https://example.com/event-2"
     },
     {
-      "title": "Project Demo Night",
-      "date": "2026-04-02",
-      "time": "7:00 PM - 8:30 PM",
-      "location": "John Crerar Library",
-      "description": "Replace with demo format and how visitors can attend.",
-      "url": "https://example.org/replace-event-link-3"
+      "title": "[Event 3 Title]",
+      "date": "2026-03-24",
+      "time": "[Event 3 Time]",
+      "location": "[Event 3 Location]",
+      "description": "[Event 3 Description]",
+      "url": "https://example.com/event-3"
     }
   ]
 }
