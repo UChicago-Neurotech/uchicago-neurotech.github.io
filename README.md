@@ -17,7 +17,7 @@ The site is a single page (`src/pages/index.astro`). All content lives in `src/c
 | Name, email, socials, top banner | `site.json` |
 | 1. What we do | `home.md` |
 | 2. Projects (name, one-line description, optional links) | `projects.json` |
-| 3. Board members + faculty mentor (name, role, link, details behind [+]) | `team.json` |
+| 3. Who we are: board members + faculty mentor (name, role, link, details behind [+]) | `team.json` |
 | 4. Join us | `join.md` |
 
 Set `banner.show` in `site.json` to `false` to hide the ">>> applications open <<<" line.
