@@ -1,50 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-muted: #f8f4f4;
-  --text: #0f172a;
-  --text-muted: #334155;
-  --ring: #800000;
+  --maroon: #800000;
+  --ink: #1f1d1a;
+  --muted: #6e6a63;
+  --paper: #fbfaf7;
+  --font: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
-html,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'IBM Plex Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.7;
+}
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 1.5rem 5rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
 }
 
 a {
-  color: inherit;
+  color: var(--maroon);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
-.prose a {
-  @apply text-brand-700 underline decoration-brand-300 underline-offset-4;
+a:hover {
+  background: var(--maroon);
+  color: var(--paper);
+  text-decoration: none;
 }
 
-.prose :where(h2, h3) {
-  @apply text-slate-900;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-.prose :where(p, li) {
-  @apply text-slate-700;
+::selection {
+  background: var(--maroon);
+  color: var(--paper);
 }
 
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0;
-}
-
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  z-index: 1000;
-  @apply rounded-md bg-white px-3 py-2 text-sm font-semibold shadow;
+:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
 }

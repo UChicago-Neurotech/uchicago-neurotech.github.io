@@ -1,56 +1,68 @@
-[
-  {
-    "name": "[Board Member 1 Name]",
-    "role": "[Board Member 1 Role]",
-    "bio": "[Board member 1 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-1" }
-    ]
-  },
-  {
-    "name": "[Board Member 2 Name]",
-    "role": "[Board Member 2 Role]",
-    "bio": "[Board member 2 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-2" }
-    ]
-  },
-  {
-    "name": "[Board Member 3 Name]",
-    "role": "[Board Member 3 Role]",
-    "bio": "[Board member 3 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-3" }
-    ]
-  },
-  {
-    "name": "[Board Member 4 Name]",
-    "role": "[Board Member 4 Role]",
-    "bio": "[Board member 4 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-4" }
-    ]
-  },
-  {
-    "name": "[Board Member 5 Name]",
-    "role": "[Board Member 5 Role]",
-    "bio": "[Board member 5 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-5" }
-    ]
-  },
-  {
-    "name": "[Board Member 6 Name]",
-    "role": "[Board Member 6 Role]",
-    "bio": "[Board member 6 bio here]",
-    "headshot": "/images/team/placeholder.svg",
-    "links": [
-      { "label": "[Link Label]", "href": "https://example.com/profile-6" }
-    ]
+{
+  "board": [
+    {
+      "name": "Ismael Robles-Razzaq",
+      "role": "Board Member",
+      "link": "https://ismaelroblesrazzaq.github.io/",
+      "year": "2027",
+      "majors": "Statistics & Computer Science",
+      "about": [
+        {
+          "label": "Why neurotech",
+          "text": "I believe the brain and intelligence are the most interesting problems, and solving them will contribute greatly to humanity."
+        },
+        {
+          "label": "Hobbies",
+          "text": "volleyball, tennis, caffeine, chocolate croissants"
+        }
+      ]
+    },
+    {
+      "name": "Juliet Kozlov",
+      "role": "Board Member",
+      "link": "",
+      "year": "2029",
+      "majors": "Physics & Data Science",
+      "about": [
+        {
+          "label": "Why neurotech",
+          "text": "I’d love to create prosthetics in the future and expand the mind’s capabilities through technology (plus the cyberpunk vibe is an added bonus!)"
+        },
+        {
+          "label": "Hobbies",
+          "text": "archery"
+        }
+      ]
+    },
+    {
+      "name": "Lauren Liu",
+      "role": "Board Member",
+      "link": "https://www.linkedin.com/in/laurenaliu/",
+      "year": "2029",
+      "majors": "Molecular Engineering & Political Science",
+      "about": [
+        {
+          "label": "How I got into neurotech",
+          "text": "I took a gap year to work on machine learning models trained on hospital EEG data to predict coma patient recovery outcomes."
+        }
+      ]
+    },
+    {
+      "name": "Arnav Rai",
+      "role": "Board Member",
+      "link": "https://www.linkedin.com/in/arnav-r/",
+      "year": "2029",
+      "majors": "Physics & Astrophysics",
+      "about": [
+        {
+          "label": "Hobbies",
+          "text": "adventure sports"
+        }
+      ]
+    }
+  ],
+  "mentor": {
+    "name": "Shannon Heald",
+    "role": "Faculty Mentor"
   }
-]
+}

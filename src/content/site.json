@@ -1,42 +1,16 @@
 {
-  "name": "[Organization Name Here]",
-  "short_name": "uchicago neurotech",
-  "description": "[One-sentence mission statement here]",
-  "navigation": [
-    { "label": "About", "href": "/about" },
-    { "label": "Projects", "href": "/projects" },
-    { "label": "Team", "href": "/team" },
-    { "label": "Events", "href": "/events" },
-    { "label": "Join", "href": "/join" },
-    { "label": "Contact", "href": "/contact" }
-  ],
-  "hero": {
-    "title": "[Hero Title Here]",
-    "subtitle": "[Hero subtitle or mission expansion here]",
-    "primary_cta": { "label": "[Primary CTA Text]", "href": "/join" },
-    "secondary_cta": { "label": "[Secondary CTA Text]", "href": "/projects" }
+  "name": "UChicago Neurotech",
+  "description": "[One-sentence description for search results and link previews.]",
+  "email": "iroblesrazzaq@uchicago.edu",
+  "banner": {
+    "show": true,
+    "text": "2026-27 applications now open",
+    "href": "https://forms.gle/W6xA4tQ85CP132Kc8"
   },
-  "join_links": {
-    "interest_form": { "label": "[Interest Form Label]", "href": "https://example.com/interest-form" },
-    "discord": { "label": "[Discord Label]", "href": "https://example.com/discord" },
-    "mailing_list": { "label": "[Mailing List Label]", "href": "https://example.com/mailing-list" }
-  },
-  "contact": {
-    "email": "contact@example.com",
-    "formspree_endpoint": "",
-    "socials": [
-      { "label": "[Social 1 Label]", "href": "https://example.com/social-1" },
-      { "label": "[Social 2 Label]", "href": "https://example.com/social-2" },
-      { "label": "[Social 3 Label]", "href": "https://example.com/social-3" }
-    ]
-  },
-  "footer": {
-    "copyright": "[Copyright line here]",
-    "address": "[Address here or remove this field]"
-  },
-  "partners": [
-    { "name": "[Partner Name 1]", "url": "https://example.com/partner-1" },
-    { "name": "[Partner Name 2]", "url": "https://example.com/partner-2" },
-    { "name": "[Partner Name 3]", "url": "https://example.com/partner-3" }
+  "socials": [
+    {
+      "label": "github",
+      "href": "https://github.com/uchicago-neurotech"
+    }
   ]
 }

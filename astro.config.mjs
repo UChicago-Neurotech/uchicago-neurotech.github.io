@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 
 const repository = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? '';
 const isUserOrOrgPage = repository.endsWith('.github.io');
@@ -13,6 +12,5 @@ const defaultSite = isUserOrOrgPage
 export default defineConfig({
   output: 'static',
   site: process.env.PUBLIC_SITE_URL || defaultSite,
-  base,
-  integrations: [tailwind({ applyBaseStyles: false })]
+  base
 });

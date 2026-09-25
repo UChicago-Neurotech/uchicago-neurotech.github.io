@@ -1,111 +1,200 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { render } from 'astro:content';
-import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
-import Card from '../components/Card.astro';
-import CardGrid from '../components/CardGrid.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import CalendarEmbed from '../components/CalendarEmbed.astro';
-import { getEventsData, getPageById, getProjects, getSiteData } from '../lib/content';
-import { formatDate, isUpcoming } from '../lib/date';
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import site from '../content/site.json';
+import projects from '../content/projects.json';
+import team from '../content/team.json';
 import { withBase } from '../lib/links';
 
-const [siteData, homeEntry, projects, eventsData] = await Promise.all([
-  getSiteData(),
-  getPageById('home'),
-  getProjects(),
-  getEventsData()
-]);
-
-const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 3);
-const upcomingEvents = eventsData.events.filter((event) => isUpcoming(event.date)).slice(0, 3);
-const { Content } = await render(homeEntry);
+const home = await getEntry('pages', 'home');
+const join = await getEntry('pages', 'join');
+if (!home || !join) throw new Error('Missing src/content/home.md or join.md');
+const { Content: WhatWeDo } = await render(home);
+const { Content: Join } = await render(join);
 ---
-<BaseLayout siteData={siteData}>
-  <Hero
-    title={siteData.hero.title}
-    subtitle={siteData.hero.subtitle}
-    primary={siteData.hero.primary_cta}
-    secondary={siteData.hero.secondary_cta}
-  />
-
-  <Section title={homeEntry.data.what_we_do_heading ?? 'What we do'}>
-    <CardGrid cols="4">
-      {(homeEntry.data.what_we_do_cards ?? []).map((card) => (
-        <Card title={card.title}>{card.description}</Card>
-      ))}
-    </CardGrid>
-
-    <div class="prose mt-8 max-w-none rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-      <Content />
-    </div>
-  </Section>
-
-  <Section title="Featured Projects" description="Projects marked featured in project frontmatter appear here automatically.">
-    <div slot="actions">
-      <a href={withBase('/projects')} class="text-sm font-semibold text-brand-700 hover:text-brand-800">All projects</a>
-    </div>
-
-    {featuredProjects.length > 0 ? (
-      <CardGrid cols="3">
-        {featuredProjects.map((project) => (
-          <ProjectCard
-            slug={project.slug}
-            title={project.data.title}
-            summary={project.data.summary}
-            status={project.data.status}
-            tags={project.data.tags}
-            leads={project.data.lead_names}
-          />
-        ))}
-      </CardGrid>
-    ) : (
-      <Card title="No featured projects yet.">
-        Set <code>featured: true</code> in any <code>src/content/projects/*.md</code> file to populate this section.
-      </Card>
-    )}
-  </Section>
-
-  <Section title="Next Events">
-    {eventsData.calendar_embed_url ? (
-      <CalendarEmbed url={eventsData.calendar_embed_url} note={eventsData.calendar_note} />
-    ) : upcomingEvents.length > 0 ? (
-      <CardGrid cols="3">
-        {upcomingEvents.map((event) => (
-          <Card title={event.title}>
-            <p class="font-medium text-slate-800">{formatDate(event.date)} · {event.time}</p>
-            <p>{event.location}</p>
-            <p class="mt-2">{event.description}</p>
-            {event.url && (
-              <a class="mt-3 inline-block text-sm font-semibold text-brand-700" href={event.url} target="_blank" rel="noreferrer">
-                Event details
-              </a>
-            )}
-          </Card>
-        ))}
-      </CardGrid>
-    ) : (
-      <Card title="No upcoming events listed.">
-        Add events in <code>src/content/events.json</code> or set <code>calendar_embed_url</code>.
-      </Card>
-    )}
-  </Section>
-
-  {siteData.partners && siteData.partners.length > 0 && (
-    <Section title="Sponsors & Partners">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {siteData.partners.map((partner) => (
-          <a
-            href={partner.url}
-            target="_blank"
-            rel="noreferrer"
-            class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-soft transition hover:border-brand-300 hover:text-brand-700"
-          >
-            {partner.name}
-          </a>
-        ))}
-      </div>
-    </Section>
+<Base>
+  {site.banner.show && (
+    <p class="banner">
+      <a href={site.banner.href} target="_blank" rel="noreferrer">&gt;&gt;&gt; {site.banner.text} &lt;&lt;&lt;</a>
+    </p>
   )}
-</BaseLayout>
+
+  <header>
+    <img src={withBase('/images/branding/logo.svg')} alt="" width="56" height="56" />
+    <h1>{site.name}</h1>
+  </header>
+
+  <ol class="sections">
+    <li>
+      <h2>What we do</h2>
+      <div class="body"><WhatWeDo /></div>
+    </li>
+
+    <li>
+      <h2>Planned projects</h2>
+      <ul class="body projects">
+        {projects.map((p) => (
+          <li>
+            <strong>{p.name}{p.description && ':'}</strong> {p.description}
+            {p.links.map((l) => <> [<a href={l.href} target="_blank" rel="noreferrer">{l.label}</a>]</>)}
+          </li>
+        ))}
+      </ul>
+    </li>
+
+    <li>
+      <h2>Board members</h2>
+      <ul class="body team">
+        {team.board.map((m) => (
+          <li>
+            <details>
+              <summary>
+                {m.link ? <a href={m.link} target="_blank" rel="noreferrer">{m.name}</a> : <strong>{m.name}</strong>}<span class="muted">, {m.role}</span>
+              </summary>
+              <div class="more">
+                <p>Class of {m.year}, {m.majors}</p>
+                {m.about.map((a) => <p><span class="label">{a.label}:</span> {a.text}</p>)}
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+      <p class="mentor"><strong>{team.mentor.name}</strong><span class="muted">, {team.mentor.role}</span></p>
+    </li>
+
+    <li>
+      <h2>Join us</h2>
+      <div class="body">
+        <Join />
+      </div>
+    </li>
+
+    <li>
+      <h2>Contact</h2>
+      <p class="body">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.socials.map((s) => <> [<a href={s.href} target="_blank" rel="noreferrer">{s.label}</a>]</>)}
+      </p>
+    </li>
+  </ol>
+</Base>
+
+<style>
+  .banner {
+    margin-bottom: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  header img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .sections {
+    margin: 0;
+    padding-left: 1.75rem;
+  }
+
+  .sections > li {
+    padding-left: 0.5rem;
+  }
+
+  .sections > li + li {
+    margin-top: 2.75rem;
+  }
+
+  .sections > li::marker {
+    color: var(--maroon);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .body {
+    margin-top: 0.85rem;
+  }
+
+  .body :global(* + p),
+  .body :global(* + ul) {
+    margin-top: 0.85rem;
+  }
+
+  .body :global(ul) {
+    padding-left: 1.1rem;
+    list-style: '– ';
+  }
+
+  .projects {
+    padding-left: 1.1rem;
+    list-style: '– ';
+  }
+
+  .team {
+    padding: 0;
+    list-style: none;
+  }
+
+  .team > li + li,
+  .projects li + li {
+    margin-top: 0.4rem;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: ' [+]';
+    color: var(--maroon);
+  }
+
+  details[open] summary::after {
+    content: ' [–]';
+  }
+
+  .more {
+    margin: 0.3rem 0 0.6rem 1.5rem;
+    color: var(--muted);
+  }
+
+  .label {
+    color: var(--ink);
+  }
+
+  .more p + p {
+    margin-top: 0.3rem;
+  }
+
+  .mentor {
+    margin-top: 0.85rem;
+  }
+</style>
